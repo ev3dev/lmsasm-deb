@@ -1,0 +1,28 @@
+Source: lmsasm
+Section: devel
+Priority: extra
+Maintainer: David Lechner <david@lechnology.com>
+Build-Depends: debhelper (>= 9),
+               dh-golang,
+               golang-go,
+               golang-yaml.v2-dev
+Standards-Version: 3.9.6
+Homepage: https://github.com/ev3dev/lmsasm
+Vcs-Browser: https://github.com/ev3dev/lmsasm-deb
+Vcs-Git: https://github.com/ev3dev/lmsasm-deb.git
+
+Package: lmsasm
+Architecture: any
+Built-Using: ${misc:Built-Using}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: Assembler for LEGO MINDSTORMS EV3
+ Assembler for LEGO MINDSTORMS EV3 About lmsasm is a tool to compile
+ LEGO MINDSTORMS EV3 bytecode language files (.lms) into LEGO MINDSTORMS
+ EV3 VM executable files (.rbf).
+ .
+ This particular version is a reimplementation of the lmsasm
+ tool that is part of the official EV3 Firmware Source Code
+ (http://www.lego.com/en-us/mindstorms/downloads).  Disclaimer LEGO®
+ is a trademark of the LEGO Group of companies which does not sponsor,
+ authorize or endorse this software.

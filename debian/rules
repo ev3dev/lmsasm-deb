@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+
+export DH_GOPKG := github.com/ev3dev/lmsasm/lmsasm
+
+%:
+	dh $@ --buildsystem=golang --with=golang
+
+override_dh_auto_configure:
+	dh_auto_configure
+	# Link our packages from the source directory to the $GOPATH
+	mkdir -p obj-$(DEB_BUILD_GNU_TYPE)/src/github.com/ev3dev/lmsasm
+	ln -s $(CURDIR)/assembler \
+		$(CURDIR)/ast \
+		$(CURDIR)/bytecodes \
+		$(CURDIR)/parser \
+		$(CURDIR)/scanner \
+		$(CURDIR)/token \
+		obj-$(DEB_BUILD_GNU_TYPE)/src/github.com/ev3dev/lmsasm/
