@@ -22,4 +22,4 @@ override_dh_auto_configure:
 override_dh_auto_install:
 	dh_auto_install
 	mkdir -p debian/lmsasm/usr/share/man/man1
-	pandoc --standalone --to man debian/lmsasm.md | gzip -9 > debian/lmsasm/usr/share/man/man1/lmsasm.1.gz
+	pandoc --standalone --to man lmsasm/lmsasm.md | gzip -9 > debian/lmsasm/usr/share/man/man1/lmsasm.1.gz
