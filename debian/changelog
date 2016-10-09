@@ -1,3 +1,10 @@
+lmsasm (1.0.0-2) stable; urgency=medium
+
+  * Add multiarch to debian/control
+  * Add man page
+
+ -- David Lechner <david@lechnology.com>  Sun, 09 Oct 2016 14:59:28 -0500
+
 lmsasm (1.0.0-1) stable; urgency=medium
 
   * Initial release
