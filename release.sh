@@ -14,7 +14,7 @@ OS=debian DIST=jessie ARCH=i386 PBUILDER_OPTIONS="--binary-arch" pbuilder-ev3dev
 ssh ${arm_target} "mkdir -p ~/pbuilder-ev3dev/source"
 scp ~/pbuilder-ev3dev/debian/jessie-amd64/${source}_${version}.dsc \
     ${arm_target}:~/pbuilder-ev3dev/source
-scp ~/pbuilder-ev3dev/debian/jessie-amd64/${source}_${version%-*}.orig.tar.xz \
+scp ~/pbuilder-ev3dev/debian/jessie-amd64/${source}_${version%-*}.orig.tar.gz \
     ${arm_target}:~/pbuilder-ev3dev/source
 scp ~/pbuilder-ev3dev/debian/jessie-amd64/${source}_${version}.debian.tar.xz \
     ${arm_target}:~/pbuilder-ev3dev/source
@@ -40,7 +40,7 @@ ssh -t ${arm_target} "OS=raspbian DIST=jessie ARCH=armhf pbuilder-ev3dev dsc-bui
 mkdir -p ~/pbuilder-ev3dev/raspbian/jessie-armhf
 scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version}.dsc \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
-scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version%-*}.orig.tar.xz \
+scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version%-*}.orig.tar.gz \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
 scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version}.debian.tar.xz \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
