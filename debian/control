@@ -13,6 +13,7 @@ Vcs-Git: https://github.com/ev3dev/lmsasm-deb.git
 
 Package: lmsasm
 Architecture: any
+Multi-Arch: foreign
 Built-Using: ${misc:Built-Using}
 Depends: ${shlibs:Depends},
          ${misc:Depends}
