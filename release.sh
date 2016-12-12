@@ -24,6 +24,8 @@ ssh -t ${arm_target} "OS=debian DIST=jessie ARCH=armhf PBUILDER_OPTIONS='--binar
 mkdir -p ~/pbuilder-ev3dev/debian/jessie-armhf
 scp ${arm_target}:~/pbuilder-ev3dev/debian/jessie-armhf/lmsasm_${version}_armhf.deb \
     ~/pbuilder-ev3dev/debian/jessie-armhf/
+scp ${arm_target}:~/pbuilder-ev3dev/debian/jessie-armhf/lmsgen_${version}_armhf.deb \
+    ~/pbuilder-ev3dev/debian/jessie-armhf/
 scp ${arm_target}:~/pbuilder-ev3dev/debian/jessie-armhf/${source}_${version}_armhf.changes \
     ~/pbuilder-ev3dev/debian/jessie-armhf/
 
@@ -32,19 +34,23 @@ ssh -t ${arm_target} "OS=debian DIST=jessie ARCH=armel PBUILDER_OPTIONS='--binar
 mkdir -p ~/pbuilder-ev3dev/debian/jessie-armel
 scp ${arm_target}:~/pbuilder-ev3dev/debian/jessie-armel/lmsasm_${version}_armel.deb \
     ~/pbuilder-ev3dev/debian/jessie-armel/
+scp ${arm_target}:~/pbuilder-ev3dev/debian/jessie-armel/lmsgen_${version}_armel.deb \
+    ~/pbuilder-ev3dev/debian/jessie-armel/
 scp ${arm_target}:~/pbuilder-ev3dev/debian/jessie-armel/${source}_${version}_armel.changes \
     ~/pbuilder-ev3dev/debian/jessie-armel/
 
 ssh -t ${arm_target} "OS=raspbian DIST=jessie ARCH=armhf pbuilder-ev3dev dsc-build \
     ~/pbuilder-ev3dev/source/${source}_${version}.dsc"
 mkdir -p ~/pbuilder-ev3dev/raspbian/jessie-armhf
-scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version}.dsc \
+scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/${source}_${version}.dsc \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
-scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version%-*}.orig.tar.gz \
+scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/${source}_${version%-*}.orig.tar.gz \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
-scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version}.debian.tar.xz \
+scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/${source}_${version}.debian.tar.xz \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
 scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsasm_${version}_armhf.deb \
+    ~/pbuilder-ev3dev/raspbian/jessie-armhf/
+scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/lmsgen_${version}_armhf.deb \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
 scp ${arm_target}:~/pbuilder-ev3dev/raspbian/jessie-armhf/${source}_${version}_armhf.changes \
     ~/pbuilder-ev3dev/raspbian/jessie-armhf/
