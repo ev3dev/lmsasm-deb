@@ -1,3 +1,9 @@
+lmsasm (1.1.0-2) stable; urgency=medium
+
+  * Go back to having one binary package
+
+ -- David Lechner <david@lechnology.com>  Mon, 12 Dec 2016 10:54:05 -0600
+
 lmsasm (1.1.0-1) stable; urgency=medium
 
   * Imported Upstream version 1.1.0
