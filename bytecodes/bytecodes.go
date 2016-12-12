@@ -51,6 +51,14 @@ const (
 	ParamTypeVariable               = "PARV"
 )
 
+type SupportType string
+
+const (
+	SupportTypeOfficial SupportType = "official"
+	SupportTypeXtended              = "xtended"
+	SupportTypeCompat               = "compat"
+)
+
 type Command struct {
 	Desc    string ",omitempty"
 	Value   uint8
@@ -62,7 +70,8 @@ type Command struct {
 type Enum struct {
 	Desc    string ",omitempty"
 	Members map[string]EnumMember
-	Remarks string ",omitempty"
+	Support *Support ",omitempty"
+	Remarks string   ",omitempty"
 }
 
 type EnumMember struct {
@@ -85,16 +94,16 @@ type Support struct {
 	Compat   bool
 }
 
-func (s *Support) Check(v string) bool {
+func (s *Support) Check(v SupportType) bool {
 	if s == nil {
 		return true // default value when "support:" is not specified in yaml
 	}
 	switch v {
-	case "official":
+	case SupportTypeOfficial:
 		return s.Official
-	case "xtended":
+	case SupportTypeXtended:
 		return s.Xtended
-	case "compat":
+	case SupportTypeCompat:
 		return s.Compat
 	default:
 		panic(fmt.Sprintf("Bad support version name %v", v))
@@ -112,7 +121,7 @@ func GetDefs(name string) (defs Defs, err error) {
 	return
 }
 
-func Scope(name, support string) (*ast.Scope, error) {
+func Scope(name string, support SupportType) (*ast.Scope, error) {
 	defs, err := GetDefs(name)
 	if err != nil {
 		return nil, err
