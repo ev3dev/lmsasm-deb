@@ -27,12 +27,3 @@ Description: Assembler for LEGO MINDSTORMS EV3
  (http://www.lego.com/en-us/mindstorms/downloads).  Disclaimer LEGO®
  is a trademark of the LEGO Group of companies which does not sponsor,
  authorize or endorse this software.
-
-Package: lmsgen
-Architecture: any
-Multi-Arch: foreign
-Built-Using: ${misc:Built-Using}
-Depends: ${misc:Depends}
-Description: Code generator for LEGO MINDSTORMS EV3
- Code generator that uses a template file to create code using LEGO MINDSTORMS
- bytecodes.
