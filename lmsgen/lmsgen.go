@@ -13,6 +13,18 @@ import (
 	"text/template"
 )
 
+func opLookup(d bytecodes.Defs, s bytecodes.SupportType) map[uint8]string {
+	return s.OpcodeLookup(d.Ops)
+}
+
+func cmdLookup(p bytecodes.Param, s bytecodes.SupportType) map[uint8]string {
+	return s.CommandLookup(p.Commands)
+}
+
+func enumLookup(e bytecodes.Enum, s bytecodes.SupportType) map[int32]string {
+	return s.EnumLookup(e.Members)
+}
+
 func isString(value interface{}) bool {
 	switch value.(type) {
 	case string:
@@ -69,17 +81,20 @@ func main() {
 	}
 
 	funcs := template.FuncMap{
-		"isString": isString,
-		"official": official,
-		"xtended":  xtended,
-		"compat":   compat,
+		"opLookup":   opLookup,
+		"cmdLookup":  cmdLookup,
+		"enumLookup": enumLookup,
+		"isString":   isString,
+		"official":   official,
+		"xtended":    xtended,
+		"compat":     compat,
 	}
 
 	defs, err := bytecodes.GetDefs("ev3")
 	if err != nil {
 		log.Fatalln("Error reading bytecodes:", err)
 	}
-	tmpl := template.Must(template.New("test").Funcs(funcs).Parse(string(text)))
+	tmpl := template.Must(template.New(*in).Funcs(funcs).Parse(string(text)))
 	err = tmpl.Execute(outFile, defs)
 	if err != nil {
 		log.Fatalln("Error parsing template:", err)
